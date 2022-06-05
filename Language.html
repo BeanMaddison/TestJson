@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语言分布地图</title>
+
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        a{
+            background-color: white;
+            border: 3px solid black;
+            
+        }
+        #a-div{
+            position:fixed;
+            top: 5%;
+            left: 5%;
+            z-index: 999;
+        }
+        #checkbox-div{
+            position:fixed;
+            top: 20%;
+            right: 5%;
+            background-color: white;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.19/"></script>
+
+</head>
+
+<body>
+    <div id="a-div">
+        <a href="./mainmap.html">WorldMap(Tool)</a>
+    </div>
+    <script>
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/tasks/QueryTask",
+            "esri/tasks/support/Query",
+            "esri/layers/GraphicsLayer",
+            "esri/symbols/SimpleFillSymbol",
+            "esri/layers/GeoJSONLayer",
+            "esri/layers/FeatureLayer",
+            "esri/PopupTemplate"], (Map, MapView, QueryTask, Query, GraphicsLayer, SimpleFillSymbol,
+                GeoJSONLayer, FeatureLayer,PopupTemplate) => {
+            const map = new Map({
+                basemap: "hybrid"
+            });
+            const view = new MapView({
+                container: "viewDiv",
+                map: map,
+                zoom: 3,
+                center: [40, -28] // longitude, latitude
+            });
+
+
+            document.getElementById('Arabic').addEventListener('click', function () {
+                const geoJSONLayer = new GeoJSONLayer({
+                    url: "https://raw.githubusercontent.com/BeanMaddison/TestJson/main/Arabic_Merge.json",
+                    popupTemplate: {
+                        title: "国家名称：{name} 使用语言：阿拉伯语 使用人数：{population}万人"
+                    },
+                });
+                map.add(geoJSONLayer);
+            });
+
+            document.getElementById('Chinese').addEventListener('click', function () {
+                const geoJSONLayer = new GeoJSONLayer({
+                    url: " https://raw.githubusercontent.com/BeanMaddison/TestJson/main/Chinese_Merge.json",
+                    popupTemplate: {
+                        title: "国家名称：{name}  使用语言：中文  使用人数：{population}万人"
+                    },
+                });
+                map.add(geoJSONLayer);
+            });
+           
+            document.getElementById('English').addEventListener('click', function () {
+                const geoJSONLayer = new GeoJSONLayer({
+                    url: "https://raw.githubusercontent.com/BeanMaddison/TestJson/main/English_merge.json",
+                    popupTemplate: {
+                        title: "国家名称：{name}  使用语言：英语  使用人数：{population}万人"
+                    },
+                });
+                map.add(geoJSONLayer);
+            });
+
+            document.getElementById('French').addEventListener('click', function () {
+                const geoJSONLayer = new GeoJSONLayer({
+                    url: "https://raw.githubusercontent.com/BeanMaddison/TestJson/main/French_merge.json",
+                    popupTemplate: {
+                        title: "国家名称：{name}  使用语言：法语  使用人数：{population}万人"
+                    },
+                });
+                map.add(geoJSONLayer);
+            });
+
+            document.getElementById('Spanish').addEventListener('click', function () {
+                const geoJSONLayer = new GeoJSONLayer({
+                    url: "https://raw.githubusercontent.com/BeanMaddison/TestJson/main/Spanish_merge.json",
+                    popupTemplate: {
+                        title: "国家名称：{name}  使用语言：西班牙语 使用人数：{population}万人"
+                    },
+                });
+                map.add(geoJSONLayer);
+            });
+
+            document.getElementById('Russian').addEventListener('click', function () {
+                const geoJSONLayer = new GeoJSONLayer({
+                    url: "https://raw.githubusercontent.com/BeanMaddison/TestJson/main/Russian_Merge.json",
+                    popupTemplate: {
+                        title: "国家名称：{name}  使用语言：俄语  使用人数：{population}万人"
+                    },
+                });
+                map.add(geoJSONLayer);
+            });
+        }
+        );
+    </script>
+    <div id="viewDiv"></div>
+    <div id="checkbox-div">
+        <input type="checkbox" value="中文" id="Chinese">中文
+        <br>
+        <input type="checkbox" value="英语" id="English">英文
+        <br>
+        <input type="checkbox" value="法语" id="French">法语
+        <br>
+        <input type="checkbox" value="西班牙语" id="Spanish">西班牙语
+        <br>
+        <input type="checkbox" value="阿拉伯语" id="Arabic">阿拉伯语
+        <br>
+        <input type="checkbox" value="俄语" id="Russian">俄语
+    </div>
+
+
+</body>
+
+</html>

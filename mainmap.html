@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>WorldMap</title>
+    <link rel="stylesheet" href="./mainmap.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.10/"></script>
+</head>
+
+<body>
+    <div id="a-div">
+        <a href="./Language.html">LanguageMap</a>
+    </div>
+    <!-- main map
+        点击每一个国家，弹出该国家的第一语言、第二语言、使用人数
+        对几大语言——中文、英文、西语、法语、葡语，显示其现今使用范围
+        地区性语言与大国语言 -->
+    <script src="./mainmap.js"></script>
+
+    <div id="viewDiv"></div>
+
+    <div id="div2"></div>
+
+    <div id="check_div">
+        <input type="radio" id="gray" name="basemap"><img src="./IMG/gray.png" alt="gray" title="gray">
+        <input type="radio" id="hybrid" name="basemap" checked><img src="./IMG/hybrid.jpg" alt="hybrid" title="hybrid">
+        <br />
+        <input type="radio" id="terrain" name="basemap"><img src="./IMG/terrin.png" alt="terrain" height="105px"
+            width="116px" title="terrain">
+        <input type="radio" id="osm" name="basemap"><img src="./IMG/osm.jpg" alt="osm" title="osm">
+        <br />
+        <input type="radio" id="streets" name="basemap"><img src="./IMG/streets.png" alt="streets" title="streets">
+        <input type="radio" id="streets_night" name="basemap"><img src="./IMG/streets_night.jpeg" alt="streets_night"
+            title="streets_night" height="105px" width="116px">
+    </div>
+
+    <div id="layerbox">
+        <p>Load feature layer</p>
+        <div class="singlebox">
+            <p>Point Layer</p>
+            <input type="button" name="add_button" id="Add_point" value="Add">
+            <input type="button" name="remove_button" id="Remove_point" value="Remove">
+            <br />
+            <img src="./IMG/point.png" alt="Point feature Layer" title="Point feature Layer" height="105px"
+                width="116px">
+        </div>
+
+        <div class="singlebox">
+            <p>Line Layer</p>
+            <input type="button" name="add_button" id="Add_line" value="Add">
+            <input type="button" name="remove_button" id="Remove_line" value="Remove">
+            <br />
+            <img src="./IMG/line.png" alt="Line feature Layer" title="Line feature Layer" height="105px" width="116px">
+        </div>
+
+        <div class="singlebox">
+            <!-- <p>Polygon Layer</p> -->
+            <input type="button" name="add_button" id="Add_polygon" value="">
+            <input type="button" name="remove_button" id="Remove_polygon" value="Remove"><br />
+            <br />
+            <!-- <img src="./IMG/polyline.png" alt="Polyline feature Layer" title="Polyline feature Layer" height="105px" width="116px"> -->
+        </div>
+
+        <div id="Layers"></div>
+
+    </div>
+
+    <div id="right-div">
+        <div id="language-div">
+            <input type="checkbox" value="中文" id="Chinese">中文
+            <br>
+            <input type="checkbox" value="英语" id="English">英文
+            <br>
+            <input type="checkbox" value="法语" id="French">法语
+            <br>
+            <input type="checkbox" value="西班牙语" id="Spanish">西班牙语
+            <br>
+            <input type="checkbox" value="阿拉伯语" id="Arabic">阿拉伯语
+            <br>
+            <input type="checkbox" value="俄语" id="Russian">俄语
+
+        </div>
+        <div id="simul">
+            <input type="button" id="simul_button" value="Simultaneously Operate">
+        </div>
+    </div>
+
+    <div id="coordsWidget" className="esri-widget esri-component"></div>
+
+
+</body>
+
+</html>
